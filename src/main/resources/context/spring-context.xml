@@ -17,4 +17,6 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
 	default-lazy-init="false">
 	
+	<import resource="spring-task.xml"/>
+	<import resource="spring-shiro.xml"/>
 </beans>

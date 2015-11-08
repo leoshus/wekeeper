@@ -262,6 +262,11 @@
 				<artifactId>shiro-ehcache</artifactId>
 				<version>${shiro.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-quartz</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
 			<!-- SECURITY end -->
 			<!-- LOGGING begin -->
 			<dependency>
