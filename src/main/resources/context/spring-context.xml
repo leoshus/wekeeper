@@ -18,7 +18,7 @@
 	default-lazy-init="false">
 	
 	<!-- 使用Annotation自动注册Bean，解决事务失效问题：在主容器中不扫描@Controller注解，在SpringMVC中只扫描@Controller注解 -->
-	<context:component-scan base-package="com.sdw.soft">
+	<context:component-scan base-package="com.sdw.soft.**.dao.*,com.sdw.soft.**.service.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
@@ -29,14 +29,14 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" /> 
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-		<property name="typeAliasesPackage" value="com.sdw.soft" />
+		<!-- <property name="typeAliasesPackage" value="com.sdw.soft" /> -->
 		<!-- 显式指定Mapper文件位置 -->
 		<property name="mapperLocations" value="classpath:/mappings/*Mapper.xml" />
 	</bean>
 	
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.sdw.soft" />
+		<property name="basePackage" value="com.sdw.soft.wekeeper.common.user.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<property name="annotationClass" value="com.sdw.soft.core.mybatis.WekeeperRepository"/>
 	</bean>
