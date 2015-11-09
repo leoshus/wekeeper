@@ -27,8 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sdw.soft.wekeeper.common.user.vo.SysUser;
 import com.sdw.soft.wekeeper.common.utils.VerifyCodeUtil;
-import com.sdw.soft.wekeeper.common.vo.SysUser;
 
 /**
  * author shangyd
