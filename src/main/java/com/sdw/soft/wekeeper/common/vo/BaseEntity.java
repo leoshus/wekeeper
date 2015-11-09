@@ -6,15 +6,15 @@ import java.io.Serializable;
  * @author shangyd
  * @date 2015年11月9日 下午5:33:07
  **/
-public abstract class BaseEntity<ID extends Serializable> {
+public abstract class BaseEntity{
 
-	private ID id;
+	private long id;
 
-	public ID getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(ID id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	

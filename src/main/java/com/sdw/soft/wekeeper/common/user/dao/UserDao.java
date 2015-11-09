@@ -10,5 +10,5 @@ import com.sdw.soft.wekeeper.common.user.vo.SysUser;
 @WekeeperRepository
 public interface UserDao {
 
-	public int save(SysUser user);
+	public int saveUser(SysUser user);
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sdw.soft.wekeeper.common.user.dao.UserDao">
 	<resultMap type="com.sdw.soft.wekeeper.common.user.vo.SysUser" id="sysUser">
-		<id property="id" column="user_id"/>
+		<id property="id" column="user_id"  javaType="long" jdbcType="BIGINT"/>
 		<result property="username" column="username"/>
 		<result property="password" column="password"/>
 		<result property="salt" column="salt"/>
@@ -10,8 +10,8 @@
 		<result property="isAdmin" column="is_admin"/>
 		<result property="hasdel" column="hasdel"/>
 	</resultMap>
-	<insert id="save" parameterType="com.sdw.soft.wekeeper.common.user.vo.SysUser">
-		insert into sys_user (id,username,password,salt,user_status,isAdmin,hasdel) 
-		values(#{id,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{salt,jdbcType=VARCHAR},#{userStatus},#{isAdmin,jdbc.BOOLEAN},#{hasdel,jdbc.BOOLEAN})
+	<insert id="saveUser" parameterType="com.sdw.soft.wekeeper.common.user.vo.SysUser">
+		insert into sys_user (user_id,username,password,salt,user_status,is_admin,hasdel) 
+		values(#{id}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{salt,jdbcType=VARCHAR},#{userStatus},#{isAdmin,jdbcType=BOOLEAN},#{hasdel,jdbcType=BOOLEAN})
 	</insert>
 </mapper>

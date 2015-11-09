@@ -6,7 +6,7 @@ import com.sdw.soft.wekeeper.common.vo.BaseEntity;
  * @author shangyd
  * @date 2015年11月9日 下午5:51:10
  **/
-public class RoleToPermission extends BaseEntity<Long> {
+public class RoleToPermission extends BaseEntity {
 
 	private Long roleId;
 	private Long permissionId;

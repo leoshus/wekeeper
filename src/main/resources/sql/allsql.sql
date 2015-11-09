@@ -3,7 +3,7 @@ create table sys_user(
 		username varchar(30) not null,
 		password varchar(40),
 		salt varchar(40),
-		user_status varchar(2),
+		user_status varchar(20),
 		is_admin varchar(1),
 		hasdel varchar(1),
 		primary key (user_id)

@@ -6,7 +6,7 @@ import com.sdw.soft.wekeeper.common.vo.BaseEntity;
  * @author shangyd
  * @date 2015年11月9日 下午5:44:15
  **/
-public class Role extends BaseEntity<Long> {
+public class Role extends BaseEntity {
 
 	private String name;
 	private String role;

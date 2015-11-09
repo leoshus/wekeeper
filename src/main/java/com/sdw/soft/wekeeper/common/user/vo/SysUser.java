@@ -6,7 +6,7 @@ import com.sdw.soft.wekeeper.common.vo.BaseEntity;
  * author shangyd
  * date 2015年11月8日
  **/
-public class SysUser extends BaseEntity<Long>{
+public class SysUser extends BaseEntity{
 
 	private String username;
 	private String password;

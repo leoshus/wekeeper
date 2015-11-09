@@ -6,7 +6,7 @@ import com.sdw.soft.wekeeper.common.vo.BaseEntity;
  * @author shangyd
  * @date 2015年11月9日 下午5:45:36
  **/
-public class Permission extends BaseEntity<Long> {
+public class Permission extends BaseEntity {
 
 	private String name;
 	private String permission;
