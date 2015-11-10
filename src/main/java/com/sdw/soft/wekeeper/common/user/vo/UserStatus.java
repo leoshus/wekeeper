@@ -1,19 +1,23 @@
 package com.sdw.soft.wekeeper.common.user.vo;
+
+import com.sdw.soft.core.mybatis.handler.ValuedEnum;
+
 /**
  * @author shangyd
  * @date 2015年11月9日 下午5:38:01
  **/
-public enum UserStatus {
+public enum UserStatus implements ValuedEnum{
 	normal(0),//"正常"
 	blocked(1);//"锁定"
 	
-	private final int status;
+	private int value;
 	
-	private UserStatus(int status){
-		this.status = status;
+	private UserStatus(int value){
+		this.value = value;
 	}
 	
-	public int getStatus(){
-		return status;
+	@Override
+	public int getValue() {
+		return value;
 	}
 }

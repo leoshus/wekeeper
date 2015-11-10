@@ -1,5 +1,7 @@
 package com.sdw.soft.wekeeper.common.permission.vo;
 
+import java.util.Date;
+
 import com.sdw.soft.wekeeper.common.vo.BaseEntity;
 
 /**
@@ -12,6 +14,9 @@ public class Permission extends BaseEntity {
 	private String permission;
 	private String decription;
 	private boolean isAvailable;
+	private Date createTime;
+	private Date modifyTime;
+	
 	public String getName() {
 		return name;
 	}
@@ -35,5 +40,17 @@ public class Permission extends BaseEntity {
 	}
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
+	}
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	public Date getModifyTime() {
+		return modifyTime;
+	}
+	public void setModifyTime(Date modifyTime) {
+		this.modifyTime = modifyTime;
 	}
 }

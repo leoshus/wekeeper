@@ -1,5 +1,7 @@
 package com.sdw.soft.wekeeper.common.user.vo;
 
+import java.util.Date;
+
 import com.sdw.soft.wekeeper.common.vo.BaseEntity;
 
 /**
@@ -14,7 +16,8 @@ public class SysUser extends BaseEntity{
 	private UserStatus userStatus;
 	private boolean isAdmin;
 	private boolean hasdel;
-	
+	private Date createTime;
+	private Date modifyTime;
 	public String getUsername() {
 		return username;
 	}
@@ -50,5 +53,17 @@ public class SysUser extends BaseEntity{
 	}
 	public void setHasdel(boolean hasdel) {
 		this.hasdel = hasdel;
+	}
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	public Date getModifyTime() {
+		return modifyTime;
+	}
+	public void setModifyTime(Date modifyTime) {
+		this.modifyTime = modifyTime;
 	}
 }

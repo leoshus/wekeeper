@@ -1,5 +1,7 @@
 package com.sdw.soft.demo.mybatis;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -32,9 +34,8 @@ public class MybatisTest {
 	@Test
 	public void test01(){
 		SysUser user = new SysUser();
-		user.setId(1L);
 		user.setUsername("Tom");
-		user.setPassword("123");
+		user.setPassword("123456");
 		user.setSalt("hello");
 		user.setUserStatus(UserStatus.normal);
 		user.setAdmin(true);
@@ -56,5 +57,13 @@ public class MybatisTest {
 		SqlSession session = sqlSessionFactory.openSession();
 		session.insert("com.sdw.soft.wekeeper.common.user.dao.UserDao.saveUser",user);
 		session.close();
+	}
+	@Test
+	public void test03(){
+//		SysUser user = userService.findUserById(1L);
+//		System.out.println(user.getUsername() + ",status=" + user.getUserStatus().name());
+		List<SysUser> list = userService.listUser();
+		System.out.println(list.size());
+		
 	}
 }

@@ -6,12 +6,27 @@
 		<result property="username" column="username"/>
 		<result property="password" column="password"/>
 		<result property="salt" column="salt"/>
-		<result property="userStatus" column="user_status" typeHandler="com.sdw.soft.core.mybatis.handler.EnumStatusHandler"/>
+		<result property="userStatus" column="user_status" typeHandler="com.sdw.soft.core.mybatis.handler.ValueEnumTypeHandler"/>
 		<result property="isAdmin" column="is_admin"/>
 		<result property="hasdel" column="hasdel"/>
+		<result property="createTime" column="create_time"/>
+		<result property="modifyTime" column="modify_time"/>
 	</resultMap>
+	
 	<insert id="saveUser" parameterType="com.sdw.soft.wekeeper.common.user.vo.SysUser">
-		insert into sys_user (user_id,username,password,salt,user_status,is_admin,hasdel) 
-		values(#{id}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{salt,jdbcType=VARCHAR},#{userStatus},#{isAdmin,jdbcType=BOOLEAN},#{hasdel,jdbcType=BOOLEAN})
+		insert into sys_user (username,password,salt,user_status,is_admin,hasdel,create_time,modify_time) 
+		values(#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{salt,jdbcType=VARCHAR},#{userStatus,typeHandler=com.sdw.soft.core.mybatis.handler.ValueEnumTypeHandler},
+		#{isAdmin,jdbcType=BOOLEAN},#{hasdel,jdbcType=BOOLEAN},now(),now())
+		<!-- <selectKey keyProperty="user_id" resultType="long" order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey> -->
 	</insert>
+	<select id="listUser" resultMap="sysUser">
+		select * from sys_user
+	</select>
+	<select id="findUserById" resultMap="sysUser">
+		select * from sys_user where user_id=#{id}
+	</select>
+	
+	
 </mapper>

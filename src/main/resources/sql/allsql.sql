@@ -3,9 +3,11 @@ create table sys_user(
 		username varchar(30) not null,
 		password varchar(40),
 		salt varchar(40),
-		user_status varchar(20),
+		user_status int(10),
 		is_admin varchar(1),
 		hasdel varchar(1),
+		create_time datetime,
+		modify_time datetime,
 		primary key (user_id)
 ) engine=InnoDB AUTO_INCREMENT=10000 default charset=utf8;
 
@@ -16,6 +18,8 @@ create table sys_role(
 	role varchar(20),
 	description varchar(200),
 	is_available varchar(1),
+	create_time datetime,
+	modify_time datetime,
 	primary key (role_id)
 )engine=InnoDB default charset=utf8;
 
@@ -32,6 +36,8 @@ create table sys_permission(
 	permission varchar(20),
 	description varchar(200),
 	is_available varchar(1),
+	create_time datetime,
+	modify_time datetime,
 	primary key (permission_id)
 ) engine=InnoDB default charset=utf8;
 
