@@ -2,6 +2,7 @@ package com.sdw.soft.wekeeper.common.permission.dao;
 
 import java.util.List;
 
+import com.sdw.soft.core.mybatis.WekeeperRepository;
 import com.sdw.soft.wekeeper.common.auth.vo.RoleToPermission;
 import com.sdw.soft.wekeeper.common.permission.vo.Permission;
 
@@ -9,6 +10,7 @@ import com.sdw.soft.wekeeper.common.permission.vo.Permission;
  * @author shangyd
  * @date 2015年11月9日 下午7:03:59
  **/
+@WekeeperRepository
 public interface PermissionDao {
 
 	public int savePermission(Permission permission);

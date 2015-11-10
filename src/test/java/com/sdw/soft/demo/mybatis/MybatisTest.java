@@ -34,9 +34,8 @@ public class MybatisTest {
 	@Test
 	public void test01(){
 		SysUser user = new SysUser();
-		user.setUsername("Tom");
-		user.setPassword("123456");
-		user.setSalt("hello");
+		user.setUsername("admin");
+		user.setPassword("123");
 		user.setUserStatus(UserStatus.normal);
 		user.setAdmin(true);
 		user.setHasdel(false);
@@ -47,10 +46,8 @@ public class MybatisTest {
 	@Test
 	public void test02(){
 		SysUser user = new SysUser();
-		user.setId(1L);
-		user.setUsername("Tom");
+		user.setUsername("admin");
 		user.setPassword("123");
-		user.setSalt("hello");
 		user.setUserStatus(UserStatus.normal);
 		user.setAdmin(true);
 		user.setHasdel(false);

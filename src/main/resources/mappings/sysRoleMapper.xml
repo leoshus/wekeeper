@@ -35,7 +35,7 @@
 		insert into user_role (user_id,role_id)
 		values (#{userId},#{roleId})
 	</insert>
-	<select id="findRoleByUser" parameterMap="sysRole">
+	<select id="findRoleByUser" resultMap="sysRole">
 		select * from sys_role 
 		where role_id in (
 			select role_id from user_role

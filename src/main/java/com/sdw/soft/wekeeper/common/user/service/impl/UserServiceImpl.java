@@ -23,12 +23,13 @@ public class UserServiceImpl implements UserService {
 	@Resource(name="userDao")
 	private UserDao userDao;
 	
+//	@Resource(name="passwordService")
 	@Autowired
 	private PasswordService passwordService;
 	
 	@Override
 	public int save(SysUser user) {
-		return userDao.saveUser(user);
+		return userDao.saveUser(passwordService.encryptPassword(user));
 	}
 
 	@Override

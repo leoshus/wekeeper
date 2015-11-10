@@ -18,10 +18,9 @@
 	default-lazy-init="false">
 	
 	<!-- 使用Annotation自动注册Bean，解决事务失效问题：在主容器中不扫描@Controller注解，在SpringMVC中只扫描@Controller注解 -->
-	<context:component-scan base-package="com.sdw.soft.**.dao.*,com.sdw.soft.**.service.*">
+	<context:component-scan base-package="com.sdw.soft.**.dao.*,com.sdw.soft.**.service.*,com.sdw.soft.**.helper.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-	
 		<!-- 开启AOP监听 只对当前配置文件有效 -->
     <aop:aspectj-autoproxy expose-proxy="true"/>
     
@@ -36,7 +35,7 @@
 	
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.sdw.soft.wekeeper.common.user.dao" />
+		<property name="basePackage" value="com.sdw.soft" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<property name="annotationClass" value="com.sdw.soft.core.mybatis.WekeeperRepository"/>
 	</bean>

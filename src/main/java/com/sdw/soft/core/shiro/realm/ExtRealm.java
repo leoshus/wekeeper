@@ -14,16 +14,21 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sdw.soft.wekeeper.common.user.service.UserService;
+import com.sdw.soft.wekeeper.common.user.vo.SysUser;
 
 /**
- * @author shangyd
- * @date 2015年11月10日 下午6:36:52
+ * author shangyd
+ * date 2015年11月8日
  **/
 public class ExtRealm extends AuthorizingRealm {
 
+	private static final Logger logger = LoggerFactory.getLogger(ExtRealm.class);
+	
 	@Autowired
 	private UserService userService;
 	
@@ -47,14 +52,15 @@ public class ExtRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		UsernamePasswordToken uptoken = (UsernamePasswordToken)token;
-		System.out.println("验证当前Subject时获取到的token为:" + ReflectionToStringBuilder.toString(uptoken,ToStringStyle.MULTI_LINE_STYLE));
-		
-		if("hello".equals(uptoken.getUsername())){
-			AuthenticationInfo authInfo = new SimpleAuthenticationInfo("hello","123",this.getName());
-			this.setSession("currentUser", "hello");
-			return authInfo;
+		logger.info("验证当前Subject时获取到的token为:{}" , ReflectionToStringBuilder.toString(uptoken,ToStringStyle.MULTI_LINE_STYLE));
+		String password = "";
+		if(null != uptoken.getPassword()){
+			password = new String(uptoken.getPassword());
 		}
-		return null;
+		SysUser user = userService.login(uptoken.getUsername(), password);
+		this.setSession("currentUser", "hello");
+		SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user.getUsername(), password.toCharArray(), getName());
+		return info;
 	}
 
 	/**
@@ -66,7 +72,7 @@ public class ExtRealm extends AuthorizingRealm {
 		Subject currentUser = SecurityUtils.getSubject();
 		if(null != currentUser){
 			Session session = currentUser.getSession();
-			System.out.println("Session默认超时时间为[" + session.getTimeout() + "]毫秒");
+			logger.info("Session默认超时时间为[{}]毫秒",session.getTimeout());
 			if(null != session){
 				session.setAttribute(key, value);
 			}
