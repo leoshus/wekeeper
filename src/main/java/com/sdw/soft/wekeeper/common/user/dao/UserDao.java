@@ -15,4 +15,5 @@ public interface UserDao {
 	public int saveUser(SysUser user);
 	public List<SysUser> listUser();
 	public SysUser findUserById(long id);
+	public SysUser findUserByName(String username);
 }

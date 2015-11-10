@@ -59,7 +59,7 @@
 		<property name="scheduler" ref="scheduler"/>
 	</bean>
 	
-	<bean id="extRealm" class="com.sdw.soft.demo.shiro.realm.ExtRealm"/>
+	<bean id="extRealm" class="com.sdw.soft.core.shiro.realm.ExtRealm"/>
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="extRealm"/>
 		<!-- <property name="sessionManager" ref="sessionManager"/> -->

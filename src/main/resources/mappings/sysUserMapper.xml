@@ -27,6 +27,8 @@
 	<select id="findUserById" resultMap="sysUser">
 		select * from sys_user where user_id=#{id}
 	</select>
-	
+	<select id="findUserByName" resultMap="sysUser">
+		select * from sys_user where username=#{username}
+	</select>
 	
 </mapper>

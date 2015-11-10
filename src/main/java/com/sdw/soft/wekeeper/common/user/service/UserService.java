@@ -2,9 +2,7 @@ package com.sdw.soft.wekeeper.common.user.service;
 
 import java.util.List;
 
-import com.sdw.soft.wekeeper.common.auth.vo.Role;
 import com.sdw.soft.wekeeper.common.user.vo.SysUser;
-import com.sdw.soft.wekeeper.common.user.vo.UserToRole;
 
 /**
  * @author shangyd
@@ -16,4 +14,5 @@ public interface UserService {
 	public List<SysUser> listUser();
 	public SysUser findUserById(long id);
 	
+	public SysUser login(String username, String password);
 }
