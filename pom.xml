@@ -193,15 +193,15 @@
 				<type>jar</type>
 			</dependency>
 			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>servlet-api</artifactId>
-				<version>2.5</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
 				<groupId>javax.servlet.jsp</groupId>
 				<artifactId>jsp-api</artifactId>
 				<version>2.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
 				<scope>provided</scope>
 			</dependency>
 			<!-- WEB end -->
@@ -459,8 +459,13 @@
 				<groupId>org.apache.velocity</groupId>
 				<artifactId>velocity-tools</artifactId>
 				<version>${velocity.tools.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>servlet-api</artifactId>
+						<groupId>javax.servlet</groupId>
+					</exclusion>
+				</exclusions>
 			</dependency>
-			<!-- ActiveMQ -->
 			<!-- ActiveMQ -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -504,11 +509,17 @@
 				<scope>compile</scope>
 			</dependency>
 			<!-- BigData -->
-			<dependency>
+			<!-- <dependency>
 				<groupId>org.apache.hadoop</groupId>
 				<artifactId>hadoop-core</artifactId>
 				<version>${hadoop.version}</version>
-			</dependency>
+				<exclusions>
+					<exclusion>
+						<artifactId>servlet-api</artifactId>
+						<groupId>org.mortbay.jetty</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency> -->
 			<dependency>
 				<groupId>org.apache.zookeeper</groupId>
 				<artifactId>zookeeper</artifactId>
@@ -521,11 +532,11 @@
 				<version>${hbase.version}</version>
 			</dependency> -->
 			<!-- thrift -->
-			<dependency>
+			<!-- <dependency>
 				<groupId>org.apache.thrift</groupId>
 				<artifactId>libthrift</artifactId>
 				<version>${thrift.version}</version>
-			</dependency>
+			</dependency> -->
   </dependencies>
   <build>
     <finalName>wekeeper</finalName>

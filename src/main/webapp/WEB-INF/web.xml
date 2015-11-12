@@ -2,6 +2,28 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>wekeeper</display-name>
   
+   <!-- 激活Tomcat的defaultServlet来处理静态文件 -->
+  <servlet-mapping>
+	<servlet-name>default</servlet-name>
+	<url-pattern>*.jpg</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>default</servlet-name>
+	<url-pattern>*.gif</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>default</servlet-name>
+	<url-pattern>*.png</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>default</servlet-name>
+	<url-pattern>*.js</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>default</servlet-name>
+	<url-pattern>*.css</url-pattern>
+  </servlet-mapping>
+  
   <context-param>
   	<param-name>contextConfigLocation</param-name>
   	<param-value>

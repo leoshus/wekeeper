@@ -15,6 +15,12 @@
 	<mvc:annotation-driven>
 		
 	</mvc:annotation-driven>
+	
+	<mvc:resources location="/css/**" mapping="/static/css/"/>
+	<mvc:resources location="/static/js/**" mapping="/static/js/"/>
+	<mvc:resources location="/images/**" mapping="/static/images/"/>
+	<mvc:default-servlet-handler />  
+	
 	<!-- 视图文件解析配置 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:order="1">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -22,8 +28,8 @@
 		<property name="prefix" value="/WEB-INF/pages/"/>
 		<property name="suffix" value=".jsp"/>		
 	</bean>
-	<mvc:resources location="/css/**" mapping="/static/css/"/>
-	<mvc:resources location="/js/**" mapping="/static/js/"/>
-	<mvc:resources location="/images/**" mapping="/static/images/"/>
 	
+	<!-- <mvc:interceptors>
+		<bean class="com.sdw.soft.core.web.intercepter.CommonBusinessInterceptor"/>
+	</mvc:interceptors> -->
 </beans>
