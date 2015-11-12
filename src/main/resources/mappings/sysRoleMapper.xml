@@ -17,8 +17,8 @@
 		<result property="roleId" column="role_id"/>
 	</resultMap>
 	
-	<insert id="saveRole" parameterType="com.sdw.soft.wekeeper.common.auth.vo.Role">
-		insert into sys_role (role_name,role,description,is_availabel,create_time,modify_time) 
+	<insert id="saveRole" parameterType="com.sdw.soft.wekeeper.common.auth.vo.Role" keyProperty="id" useGeneratedKeys="true">
+		insert into sys_role (role_name,role,description,is_available,create_time,modify_time) 
 		values(#{name},#{role},#{description},#{isAvailable},now(),now())
 	</insert>
 	
@@ -31,7 +31,7 @@
 	</select>
 	
 	
-	<insert id="saveUserToRole" parameterType="com.sdw.soft.wekeeper.common.user.vo.UserToRole">
+	<insert id="saveUserToRole" parameterType="com.sdw.soft.wekeeper.common.user.vo.UserToRole" keyProperty="id" useGeneratedKeys="true">
 		insert into user_role (user_id,role_id)
 		values (#{userId},#{roleId})
 	</insert>

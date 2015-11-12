@@ -1,5 +1,9 @@
 package com.sdw.soft.core.shiro.realm;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.apache.shiro.SecurityUtils;
@@ -18,6 +22,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.sdw.soft.wekeeper.common.auth.service.RoleService;
+import com.sdw.soft.wekeeper.common.auth.vo.Role;
+import com.sdw.soft.wekeeper.common.permission.service.PermissionService;
+import com.sdw.soft.wekeeper.common.permission.vo.Permission;
 import com.sdw.soft.wekeeper.common.user.service.UserService;
 import com.sdw.soft.wekeeper.common.user.vo.SysUser;
 
@@ -32,18 +40,36 @@ public class ExtRealm extends AuthorizingRealm {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private RoleService roleService;
+	
+	@Autowired
+	private PermissionService permissionService;
+	
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		
 		String currentUsername = (String)super.getAvailablePrincipal(principals);
 		SimpleAuthorizationInfo simpleAuthorInfo = new SimpleAuthorizationInfo();
-		if(null != currentUsername && "hello".equals(currentUsername)){
-			simpleAuthorInfo.addRole("admin");
-			simpleAuthorInfo.addStringPermission("admin:manage");
-			System.out.println("已为用户[hello]赋予了[admin]角色和[admin:manage]权限");
-			return simpleAuthorInfo;
+		SysUser user = userService.findUserByName(currentUsername);
+		List<Role> roles = roleService.findRoleByUser(user.getId());
+		Set<String> roleSet = new HashSet<String>();
+		Set<String> permissionSet = new HashSet<String>();
+		if(null != roles && roles.size() > 0){
+			for(Role role : roles){
+				List<Permission> permissions = permissionService.findPermissionByRoleId(role.getId());
+				if(null != permissions && permissions.size() > 0){
+					for(Permission permission:permissions){
+						permissionSet.add(permission.getPermission());
+					}
+				}
+				roleSet.add(role.getRole());
+			}
 		}
-		return null;
+		simpleAuthorInfo.setRoles(roleSet);
+		simpleAuthorInfo.setStringPermissions(permissionSet);
+		
+		return simpleAuthorInfo;
 	}
 
 	/**

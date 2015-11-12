@@ -13,7 +13,7 @@
 		<result property="modifyTime" column="modify_time"/>
 	</resultMap>
 	
-	<insert id="saveUser" parameterType="com.sdw.soft.wekeeper.common.user.vo.SysUser">
+	<insert id="saveUser" parameterType="com.sdw.soft.wekeeper.common.user.vo.SysUser" keyProperty="id" useGeneratedKeys="true">
 		insert into sys_user (username,password,salt,user_status,is_admin,hasdel,create_time,modify_time) 
 		values(#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{salt,jdbcType=VARCHAR},#{userStatus,typeHandler=com.sdw.soft.core.mybatis.handler.ValueEnumTypeHandler},
 		#{isAdmin,jdbcType=BOOLEAN},#{hasdel,jdbcType=BOOLEAN},now(),now())

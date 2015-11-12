@@ -1,3 +1,4 @@
+drop table if exists sys_user;
 create table sys_user(
 		user_id bigint(20) not null auto_increment,
 		username varchar(30) not null,
@@ -11,7 +12,7 @@ create table sys_user(
 		primary key (user_id)
 ) engine=InnoDB AUTO_INCREMENT=10000 default charset=utf8;
 
-
+drop table if exists sys_role;
 create table sys_role(
 	role_id bigint(20) not null auto_increment,
 	role_name varchar(20),
@@ -23,6 +24,7 @@ create table sys_role(
 	primary key (role_id)
 )engine=InnoDB default charset=utf8;
 
+drop table if exists user_role;
 create table user_role(
 	user_role_id bigint(20) not null auto_increment,
 	user_id bigint(20),
@@ -30,6 +32,7 @@ create table user_role(
 	primary key (user_role_id)
 ) engine=InnoDB default charset=utf8;
 
+drop table if exists sys_permission;
 create table sys_permission(
 	permission_id bigint(20) not null auto_increment,
 	permission_name varchar(20),
@@ -41,6 +44,7 @@ create table sys_permission(
 	primary key (permission_id)
 ) engine=InnoDB default charset=utf8;
 
+drop table if exists role_permission;
 create table role_permission(
 	role_permission_id bigint(20) not null auto_increment,
 	role_id bigint(20),

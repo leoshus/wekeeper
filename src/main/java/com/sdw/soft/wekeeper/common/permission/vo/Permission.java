@@ -12,7 +12,7 @@ public class Permission extends BaseEntity {
 
 	private String name;
 	private String permission;
-	private String decription;
+	private String description;
 	private boolean isAvailable;
 	private Date createTime;
 	private Date modifyTime;
@@ -29,11 +29,12 @@ public class Permission extends BaseEntity {
 	public void setPermission(String permission) {
 		this.permission = permission;
 	}
-	public String getDecription() {
-		return decription;
+	
+	public String getDescription() {
+		return description;
 	}
-	public void setDecription(String decription) {
-		this.decription = decription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	public boolean isAvailable() {
 		return isAvailable;

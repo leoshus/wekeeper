@@ -17,9 +17,9 @@
 		<result property="permissionId" column="permission_id"/>
 	</resultMap>
 	
-	<insert id="savePermission" parameterType="com.sdw.soft.wekeeper.common.permission.vo.Permission">
-		insert into sys_permission (permission_name,description,is_available,create_time,modify_time)
-		values(#{name},#{permission},#{isAvailabel},now(),now())
+	<insert id="savePermission" parameterType="com.sdw.soft.wekeeper.common.permission.vo.Permission" keyProperty="id" useGeneratedKeys="true">
+		insert into sys_permission (permission_name,permission,description,is_available,create_time,modify_time)
+		values(#{name},#{permission},#{description},#{isAvailable},now(),now())
 	</insert>
 
 	<select id="listPermission" resultMap="sysPermission">
@@ -30,8 +30,8 @@
 		select * from sys_permission where permission_id=#{id}
 	</select>
 	
-	<insert id="saveRoleToPermission" parameterType="com.sdw.soft.wekeeper.common.auth.vo.RoleToPermission">
-		insert into role_permission (role_permission_id,role_id,permission_id)
+	<insert id="saveRoleToPermission" parameterType="com.sdw.soft.wekeeper.common.auth.vo.RoleToPermission" keyProperty="id" useGeneratedKeys="true">
+		insert into role_permission (role_id,permission_id)
 		values (#{roleId},#{permissionId})
 	</insert>
 	
