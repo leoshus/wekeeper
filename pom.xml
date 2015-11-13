@@ -45,6 +45,9 @@
 		<zookeeper.version>3.4.6</zookeeper.version>
 		<hbase.version>0.94.20</hbase.version>
 		<thrift.version>0.8.0</thrift.version>
+		<lucene.version>4.3.1</lucene.version>
+		<htmlunit.version>2.15</htmlunit.version>
+		<httpclient.version>4.3</httpclient.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<!-- 设定除中央仓库(repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找. -->
@@ -193,15 +196,15 @@
 				<type>jar</type>
 			</dependency>
 			<dependency>
-				<groupId>javax.servlet.jsp</groupId>
-				<artifactId>jsp-api</artifactId>
-				<version>2.1</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>servlet-api</artifactId>
 				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.1</version>
 				<scope>provided</scope>
 			</dependency>
 			<!-- WEB end -->
@@ -459,13 +462,8 @@
 				<groupId>org.apache.velocity</groupId>
 				<artifactId>velocity-tools</artifactId>
 				<version>${velocity.tools.version}</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>servlet-api</artifactId>
-						<groupId>javax.servlet</groupId>
-					</exclusion>
-				</exclusions>
 			</dependency>
+			<!-- ActiveMQ -->
 			<!-- ActiveMQ -->
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -509,17 +507,11 @@
 				<scope>compile</scope>
 			</dependency>
 			<!-- BigData -->
-			<!-- <dependency>
+			<dependency>
 				<groupId>org.apache.hadoop</groupId>
 				<artifactId>hadoop-core</artifactId>
 				<version>${hadoop.version}</version>
-				<exclusions>
-					<exclusion>
-						<artifactId>servlet-api</artifactId>
-						<groupId>org.mortbay.jetty</groupId>
-					</exclusion>
-				</exclusions>
-			</dependency> -->
+			</dependency>
 			<dependency>
 				<groupId>org.apache.zookeeper</groupId>
 				<artifactId>zookeeper</artifactId>
@@ -536,7 +528,48 @@
 				<groupId>org.apache.thrift</groupId>
 				<artifactId>libthrift</artifactId>
 				<version>${thrift.version}</version>
+				<exclusions>
+					<exclusion>
+						 <groupId>org.apache.httpcomponents</groupId>
+            			 <artifactId>httpclient</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency> -->
+			<!-- lucene -->
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-core</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-queryparser</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-analyzers-common</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
+			<!-- htmlunit -->
+			<dependency>
+				<groupId>net.sourceforge.htmlunit</groupId>
+				<artifactId>htmlunit</artifactId>
+				<version>${htmlunit.version}</version>
+			</dependency>
+			
+			 <!-- httpclient相关jar包 -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
   </dependencies>
   <build>
     <finalName>wekeeper</finalName>
