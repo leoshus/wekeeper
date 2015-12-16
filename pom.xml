@@ -11,7 +11,8 @@
 	<properties>
 		<titanium.version>1.0.0</titanium.version>
 		<junit.version>4.11</junit.version>
-		<spring.version>3.2.4.RELEASE</spring.version>
+		<spring.version>4.1.1.RELEASE</spring.version>
+<!-- 		<spring.version>3.2.4.RELEASE</spring.version> -->
 		<mybatis.version>3.2.2</mybatis.version>
 		<mybatis-spring.version>1.1.1</mybatis-spring.version>
 		<springsecurity.version>3.1.4.RELEASE</springsecurity.version>
