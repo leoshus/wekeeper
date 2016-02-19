@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 
 public class CollectionsTest {
@@ -21,7 +22,7 @@ public class CollectionsTest {
 	        "purple");
 	@Test
 	public void test01(){
-
+		ImmutableMap<String, String> map = ImmutableMap.of();
 		
 	}
 	class Foo {

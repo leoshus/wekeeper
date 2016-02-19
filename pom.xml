@@ -11,7 +11,8 @@
 	<properties>
 		<titanium.version>1.0.0</titanium.version>
 		<junit.version>4.11</junit.version>
-		<spring.version>3.2.4.RELEASE</spring.version>
+		<spring.version>4.1.1.RELEASE</spring.version>
+<!-- 		<spring.version>3.2.4.RELEASE</spring.version> -->
 		<mybatis.version>3.2.2</mybatis.version>
 		<mybatis-spring.version>1.1.1</mybatis-spring.version>
 		<springsecurity.version>3.1.4.RELEASE</springsecurity.version>
@@ -40,7 +41,7 @@
 		<velocity.version>1.7</velocity.version>
 		<velocity.tools.version>2.0</velocity.tools.version>
 		<activemq.version>5.5.1</activemq.version>
-		<jedis.version>2.1.0</jedis.version>
+		<jedis.version>2.4.1</jedis.version>
 		<hadoop.version>1.2.1</hadoop.version>
 		<zookeeper.version>3.4.6</zookeeper.version>
 		<hbase.version>0.94.20</hbase.version>
@@ -156,6 +157,13 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<!-- Spring data redis -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.4.2.RELEASE</version>
+		</dependency>
+
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -348,6 +356,11 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>${commons-fileupload.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.3</version>
 		</dependency>
 		<!-- jackson json -->
 		<dependency>
