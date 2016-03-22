@@ -11,8 +11,8 @@
 	<properties>
 		<titanium.version>1.0.0</titanium.version>
 		<junit.version>4.11</junit.version>
-		<spring.version>4.1.1.RELEASE</spring.version>
-<!-- 		<spring.version>3.2.4.RELEASE</spring.version> -->
+		<!-- <spring.version>4.1.1.RELEASE</spring.version> -->
+ 		<spring.version>3.2.4.RELEASE</spring.version>
 		<mybatis.version>3.2.2</mybatis.version>
 		<mybatis-spring.version>1.1.1</mybatis-spring.version>
 		<springsecurity.version>3.1.4.RELEASE</springsecurity.version>
@@ -49,6 +49,8 @@
 		<lucene.version>4.3.1</lucene.version>
 		<htmlunit.version>2.15</htmlunit.version>
 		<httpclient.version>4.3</httpclient.version>
+		<curator.version>2.6.0</curator.version>
+		<zkclient.version>0.3</zkclient.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<!-- 设定除中央仓库(repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找. -->
@@ -573,6 +575,30 @@
 			<artifactId>guava</artifactId>
 			<version>18.0</version>
 		</dependency>
+		<!-- Curator -->
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>${curator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
+			<version>${curator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-test</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<!-- zkclient -->
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>${zkclient.version}</version>
+		</dependency>
+		
+		
 	</dependencies>
 	<build>
 		<finalName>wekeeper</finalName>
