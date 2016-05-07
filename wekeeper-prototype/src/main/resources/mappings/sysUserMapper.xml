@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdw.soft.wekeeper.common.user.dao.UserDao">
+	<resultMap type="com.sdw.soft.wekeeper.common.user.vo.SysUser" id="sysUser">
+		<id property="id" column="user_id"  javaType="long" jdbcType="BIGINT"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="salt" column="salt"/>
+		<result property="userStatus" column="user_status" typeHandler="com.sdw.soft.core.mybatis.handler.ValueEnumTypeHandler"/>
+		<result property="isAdmin" column="is_admin"/>
+		<result property="hasdel" column="hasdel"/>
+		<result property="createTime" column="create_time"/>
+		<result property="modifyTime" column="modify_time"/>
+	</resultMap>
+	
+	<insert id="saveUser" parameterType="com.sdw.soft.wekeeper.common.user.vo.SysUser" keyProperty="id" useGeneratedKeys="true">
+		insert into sys_user (username,password,salt,user_status,is_admin,hasdel,create_time,modify_time) 
+		values(#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{salt,jdbcType=VARCHAR},#{userStatus,typeHandler=com.sdw.soft.core.mybatis.handler.ValueEnumTypeHandler},
+		#{isAdmin,jdbcType=BOOLEAN},#{hasdel,jdbcType=BOOLEAN},now(),now())
+		<!-- <selectKey keyProperty="user_id" resultType="long" order="AFTER">
+			SELECT LAST_INSERT_ID();
+		</selectKey> -->
+	</insert>
+	<select id="listUser" resultMap="sysUser">
+		select * from sys_user
+	</select>
+	<select id="findUserById" resultMap="sysUser">
+		select * from sys_user where user_id=#{id}
+	</select>
+	<select id="findUserByName" resultMap="sysUser">
+		select * from sys_user where username=#{username}
+	</select>
+	
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sdw.soft.wekeeper.common.permission.dao.PermissionDao">
+	<resultMap type="com.sdw.soft.wekeeper.common.permission.vo.Permission" id="sysPermission">
+		<result property="id" column="permission_id"/>
+		<result property="name" column="permission_name"/>
+		<result property="permission" column="permission"/>
+		<result property="description" column="description"/>
+		<result property="isAvailable" column="is_available"/>
+		<result property="createTime" column="create_time"/>
+		<result property="modifyTime" column="modify_time"/>
+	</resultMap>
+	
+	<resultMap type="com.sdw.soft.wekeeper.common.auth.vo.RoleToPermission" id="roleToPermission">
+		<result property="id" column="role_permission_id"/>
+		<result property="roleId" column="role_id"/>
+		<result property="permissionId" column="permission_id"/>
+	</resultMap>
+	
+	<insert id="savePermission" parameterType="com.sdw.soft.wekeeper.common.permission.vo.Permission" keyProperty="id" useGeneratedKeys="true">
+		insert into sys_permission (permission_name,permission,description,is_available,create_time,modify_time)
+		values(#{name},#{permission},#{description},#{isAvailable},now(),now())
+	</insert>
+
+	<select id="listPermission" resultMap="sysPermission">
+		select * from sys_permission
+	</select>
+	
+	<select id="findPermissionById" resultMap="sysPermission">
+		select * from sys_permission where permission_id=#{id}
+	</select>
+	
+	<insert id="saveRoleToPermission" parameterType="com.sdw.soft.wekeeper.common.auth.vo.RoleToPermission" keyProperty="id" useGeneratedKeys="true">
+		insert into role_permission (role_id,permission_id)
+		values (#{roleId},#{permissionId})
+	</insert>
+	
+	<select id="findPermissionByRoleId" resultMap="sysPermission">
+		select * from sys_permission where permission_id in (
+			select permission_id from role_permission
+			where role_id=#{roleId}
+		)
+	</select>
+</mapper>

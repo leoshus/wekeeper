@@ -3,11 +3,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sdw.soft</groupId>
 	<artifactId>wekeeper</artifactId>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>wekeeper Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+	<modules>
+		<module>wekeeper-api</module>
+		<module>wekeeper-provider</module>
+		<module>wekeeper-prototype</module>
+		<module>wekeeper-common</module>
+	</modules>
+	
 	<properties>
 		<titanium.version>1.0.0</titanium.version>
 		<junit.version>4.11</junit.version>
@@ -51,6 +58,8 @@
 		<httpclient.version>4.3</httpclient.version>
 		<curator.version>2.6.0</curator.version>
 		<zkclient.version>0.3</zkclient.version>
+		<dubbo.version>2.5.3</dubbo.version>
+		<wekeeper.version>0.0.1-SNAPSHOT</wekeeper.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<!-- 设定除中央仓库(repo1.maven.org/maven2/)外的其他仓库,按设定顺序进行查找. -->
@@ -91,6 +100,7 @@
 			<url>https://maven.alfresco.com/nexus/content/groups/public</url>
 		</repository>
 	</repositories>
+	<dependencyManagement>
 	<dependencies>
 		<!-- TEST START -->
 		<!-- junit -->
@@ -597,11 +607,23 @@
 			<artifactId>zkclient</artifactId>
 			<version>${zkclient.version}</version>
 		</dependency>
-		
-		
+		<!-- Dubbo -->
+		<dependency>
+			<groupId>com.alibaba</groupId>  
+		    <artifactId>dubbo</artifactId>  
+		    <version>${dubbo.version}</version>  
+		    <exclusions>  
+		      <exclusion>  
+		        <groupId>org.springframework</groupId>  
+		        <artifactId>spring</artifactId>  
+		      </exclusion>  
+		    </exclusions>  
+		</dependency>
 	</dependencies>
+	</dependencyManagement>
 	<build>
 		<finalName>wekeeper</finalName>
+		<pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -642,5 +664,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		</pluginManagement>
 	</build>
 </project>
