@@ -9,8 +9,8 @@ import com.sdw.soft.demo.dubbo.api.IDubboService;
 public class DubboServiceImpl implements IDubboService {
 
 	@Override
-	public void sayHello(String message) {
-		System.out.println("Dubbo say:" + message);
+	public String sayHello(String message) {
+		return "Dubbo say:" + message;
 	}
 
 }

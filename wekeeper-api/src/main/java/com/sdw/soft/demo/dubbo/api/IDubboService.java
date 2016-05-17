@@ -5,5 +5,5 @@ package com.sdw.soft.demo.dubbo.api;
  **/
 public interface IDubboService {
 
-	public void sayHello(String message);
+	public String sayHello(String message);
 }
