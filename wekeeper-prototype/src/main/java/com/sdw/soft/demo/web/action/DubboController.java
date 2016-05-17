@@ -1,5 +1,6 @@
 package com.sdw.soft.demo.web.action;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.sdw.soft.demo.dubbo.api.IDubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,7 @@ import java.io.PrintWriter;
 @RequestMapping(value = "/dubbo")
 public class DubboController {
 
-    @Autowired
+    @Reference(version = "1.0.0")
     private IDubboService dubboService;
 
     @RequestMapping("/demo")
