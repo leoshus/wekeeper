@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/wekeeper.iml" filepath="$PROJECT_DIR$/wekeeper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wekeeper-api/wekeeper-api.iml" filepath="$PROJECT_DIR$/wekeeper-api/wekeeper-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wekeeper-common/wekeeper-common.iml" filepath="$PROJECT_DIR$/wekeeper-common/wekeeper-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wekeeper-prototype/wekeeper-prototype.iml" filepath="$PROJECT_DIR$/wekeeper-prototype/wekeeper-prototype.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wekeeper-provider/wekeeper-provider.iml" filepath="$PROJECT_DIR$/wekeeper-provider/wekeeper-provider.iml" />
+    </modules>
+  </component>
+</project>

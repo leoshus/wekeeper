@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="wekeeper-prototype:war">
+    <output-path>$PROJECT_DIR$/wekeeper-prototype/target</output-path>
+    <root id="archive" name="wekeeper-prototype.war">
+      <element id="artifact" artifact-name="wekeeper-prototype:war exploded" />
+    </root>
+  </artifact>
+</component>
