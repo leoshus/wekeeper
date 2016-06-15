@@ -59,6 +59,7 @@
 		<curator.version>2.6.0</curator.version>
 		<zkclient.version>0.3</zkclient.version>
 		<dubbo.version>2.5.3</dubbo.version>
+		<easymock.version>3.0</easymock.version>
 		<wekeeper.version>0.0.1-SNAPSHOT</wekeeper.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -619,6 +620,13 @@
 		      </exclusion>  
 		    </exclusions>  
 		</dependency>
+		<!-- EasyMock-->
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>${easymock.version}</version>
+		</dependency>
+
 	</dependencies>
 	</dependencyManagement>
 	<build>

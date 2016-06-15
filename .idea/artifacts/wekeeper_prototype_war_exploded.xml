@@ -174,6 +174,9 @@
           <element id="library" level="project" name="Maven: com.101tec:zkclient:0.3" />
           <element id="library" level="project" name="Maven: com.alibaba:dubbo:2.5.3" />
           <element id="library" level="project" name="Maven: org.jboss.netty:netty:3.2.5.Final" />
+          <element id="library" level="project" name="Maven: org.easymock:easymock:3.0" />
+          <element id="library" level="project" name="Maven: cglib:cglib-nodep:2.2" />
+          <element id="library" level="project" name="Maven: org.objenesis:objenesis:1.2" />
           <element id="archive" name="wekeeper-api-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="wekeeper-api" />
           </element>
