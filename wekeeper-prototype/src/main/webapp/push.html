@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/static/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/push/messagepush.js"></script>
+    <script type="text/javascript">
+        function doStop(){
+            stopMsgPush();
+        }
+
+        function doWsStart(){
+            var  r6 = generateMixed(6);
+            $("#txtReq").val(r6);
+            var  params = $("#txtReq").val();
+            doStop();
+
+            wsMsgPush('127.0.0.1:8099',params,
+                    function(data){
+                        $("#txtResp").val(data);
+                    },
+                    function(){
+                        $("#txtResp").val("ws close...");
+                    } ,
+                    function(){
+                        $("#txtResp").val("ws error...");
+                    } );
+        }
+        function doAjaxStart(){
+            var r6 = generateMixed(6);
+            $("#txtAjaxReq").val(r6);
+            doStop();
+            ajaxMsgPush('',r6,1000,
+                    function(data){
+                        $("#txtAjaxResp").val(data);
+                    },function(){
+                        $("#txtAjaxResp").val("ajax close ...");
+                    },function(){
+                       $("#txtAjaxResp").val("ajax error ...");
+                    });
+        }
+    </script>
+</head>
+<body>
+<br/>
+<br/><br/>
+send: <input id="txtReq" readonly="readonly" type="text" value="" />
+<input type="button" value="start" onclick="doWsStart();">
+<input type="button" value="stop" onclick="doStop()"/>
+<br/>
+
+recv: <input id="txtResp" type="text" value=""  size="50"/>
+
+<br/><br/>
+<h2>Ajax long poll</h2>
+send: <input id="txtAjaxReq" readonly="readonly" type="text" value="" />
+<input type="button" value="start" onclick="doAjaxStart();">
+<input type="button" value="stop" onclick="doStop()"/>
+<br/>
+
+recv: <input id="txtAjaxResp" type="text" value=""  size="50"/>
+</body>
+</html>

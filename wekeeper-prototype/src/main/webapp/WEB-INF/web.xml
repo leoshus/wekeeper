@@ -28,8 +28,8 @@
   	<param-name>contextConfigLocation</param-name>
   	<param-value>
   		classpath*:/context/spring-context.xml,
-  		classpath*:/context/spring-profiles.xml,
-		classpath*:/dubbo/dubbo-consumer.xml
+  		classpath*:/context/spring-profiles.xml
+		<!--classpath*:/dubbo/dubbo-consumer.xml-->
   	</param-value>
   </context-param>
   <listener>
