@@ -107,7 +107,12 @@ public class PushServerChannelHandler extends SimpleChannelHandler {
                 channel.close().sync();
                 return;
             }
-            DynamicMessage.addAudiences(channel);
+            String message = txtReq.getText();
+            if(txtReq.getText().startsWith("#")){//connect first time
+                message = message.substring(message.indexOf("#") + 1);
+                DynamicMessage.addAudiences(channel);
+            }
+            DynamicMessage.radiate(message);
         }else {
             //other WebSocketFrame
         }

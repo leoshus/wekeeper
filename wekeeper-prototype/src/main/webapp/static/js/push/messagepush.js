@@ -4,19 +4,6 @@
 var _mp_ws = null;
 var _mp_ajax_it = null;
 
-function msgPush(url, params,onmessage,onclose,onerror){
-    wsMsgPush(url,params,onmessage,onclose,onerror);
-    if(!_mp_ws){
-        ajaxMsgPush(url,params,10000,onmessage,onclose,onerror);
-    }
-}
-
-function old_wsMsgPush(url, params,onmessage,onclose,onerror){
-    var ws = new WebSocket("ws://"+url);
-    ws.onopen = function(){ws.send('1111')};
-    ws.onmessage = function(evt){ onmessage(evt.data);};
-}
-
 function wsMsgPush(url, params,onmessage,onclose,onerror){
     _mp_ws = new WebSocket("ws://"+url);
     if(!_mp_ws){ return; }
@@ -29,6 +16,9 @@ function wsMsgPush(url, params,onmessage,onclose,onerror){
     if(onclose) _mp_ws.onclose = function (evt){ onclose(); }
 }
 
+function wsChatMsg(msg){
+    _mp_ws.send(msg);
+}
 function ajaxMsgPush(url, params,interval,onmessage,onclose,onerror){
     function __getmsg(){
         $.ajax({

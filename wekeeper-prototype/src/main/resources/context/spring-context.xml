@@ -19,7 +19,7 @@
 
 
 	<!-- 使用Annotation自动注册Bean，解决事务失效问题：在主容器中不扫描@Controller注解，在SpringMVC中只扫描@Controller注解 -->
-	<context:component-scan base-package="com.sdw.soft.**.dao.*,com.sdw.soft.**.service.*,com.sdw.soft.**.helper.*">
+	<context:component-scan base-package="com.sdw.soft.**.dao.*,com.sdw.soft.**.service.*,com.sdw.soft.**.helper.*,com.sdw.soft.demo.push.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 		<!-- 开启AOP监听 只对当前配置文件有效 -->
@@ -59,6 +59,8 @@
 		<aop:pointcut id="wekeeperpoint" expression="execution(* com.sdw.soft..*Service.*(..))" />
 		<aop:advisor pointcut-ref="wekeeperpoint" advice-ref="txAdvice" />
 	</aop:config>
+
+	<bean id="pushServer" class="com.sdw.soft.demo.push.PushServer"/>
 	<import resource="spring-task.xml"/>
 	<import resource="spring-shiro.xml"/>
 </beans>

@@ -12,13 +12,14 @@
 
         function doWsStart(){
             var  r6 = generateMixed(6);
-            $("#txtReq").val(r6);
-            var  params = $("#txtReq").val();
+            $("#nickname").val(r6);
+            var  params = "#【" + r6 + " 】加入了聊天室。。。";
             doStop();
 
-            wsMsgPush('127.0.0.1:8099',params,
+            wsMsgPush('localhost:8099',params,
                     function(data){
-                        $("#txtResp").val(data);
+                        $("#txtResp").val($("#txtResp").val() + "\n" + data);
+
                     },
                     function(){
                         $("#txtResp").val("ws close...");
@@ -26,7 +27,15 @@
                     function(){
                         $("#txtResp").val("ws error...");
                     } );
+            $("#txtResp").val("");
         }
+
+        function sendChatMsg(){
+            var msg = $("#txtMsg").val();
+            var nickname = $("#nickname").val();
+            wsChatMsg(nickname + "说:" + msg);
+        }
+
         function doAjaxStart(){
             var r6 = generateMixed(6);
             $("#txtAjaxReq").val(r6);
@@ -37,7 +46,7 @@
                     },function(){
                         $("#txtAjaxResp").val("ajax close ...");
                     },function(){
-                       $("#txtAjaxResp").val("ajax error ...");
+                        $("#txtAjaxResp").val("ajax error ...");
                     });
         }
     </script>
@@ -45,12 +54,22 @@
 <body>
 <br/>
 <br/><br/>
-send: <input id="txtReq" readonly="readonly" type="text" value="" />
-<input type="button" value="start" onclick="doWsStart();">
-<input type="button" value="stop" onclick="doStop()"/>
+
+<input type="button" value="JoinChatRoom" onclick="doWsStart();">
+<input type="button" value="LeaveChatRoom" onclick="doStop()"/>
 <br/>
 
-recv: <input id="txtResp" type="text" value=""  size="50"/>
+ChatRoom: <textarea id="txtResp" rows="50" cols="100"></textarea>
+<br/>
+<br/>
+<br/>
+NickName: <input id="nickname" type="text" value="" readonly="readonly" size="10"/>
+send: <input id="txtMsg" type="text" value="" />
+<input type="button" value="Send" onclick="sendChatMsg();">
+
+
+
+
 
 <br/><br/>
 <h2>Ajax long poll</h2>

@@ -52,7 +52,7 @@ public class DynamicMessage implements Runnable {
             }
         }
     }
-    private void radiate(String msg){
+    public static void radiate(String msg){
         audiences.write(new TextWebSocketFrame(msg));
     }
 }

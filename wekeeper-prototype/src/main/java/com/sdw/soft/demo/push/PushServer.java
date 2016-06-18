@@ -5,7 +5,6 @@ import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
@@ -13,8 +12,7 @@ import java.util.concurrent.Executors;
 /**
  * Created by shangyindong on 2016/6/17.
  */
-@Component
-public class PushServer implements InitializingBean {
+public class PushServer implements InitializingBean,Runnable {
 
     private static final Logger logger = LoggerFactory.getLogger(PushServer.class);
 
@@ -27,6 +25,7 @@ public class PushServer implements InitializingBean {
         this.port = port;
     }
 
+    @Override
     public void run() {
         logger.info("Chat Server Port:{}" , port);
         ServerBootstrap server = new ServerBootstrap(new NioServerSocketChannelFactory(Executors.newCachedThreadPool(),Executors.newCachedThreadPool()));
@@ -38,6 +37,13 @@ public class PushServer implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        /*Thread thread = new Thread(new DynamicMessage(),"DynamicMessage");
+        thread.setDaemon(true);
+        thread.start();*/
+        new PushServer(8099).run();
+    }
+
+    public static void main(String[] args){
         Thread thread = new Thread(new DynamicMessage(),"DynamicMessage");
         thread.setDaemon(true);
         thread.start();
