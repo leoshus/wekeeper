@@ -453,5 +453,10 @@
 		  <groupId>org.easymock</groupId>
 		  <artifactId>easymock</artifactId>
 	  </dependency>
+	  <!--Google Protocol Buffers-->
+	  <dependency>
+		  <groupId>com.google.protobuf</groupId>
+		  <artifactId>protobuf-java</artifactId>
+	  </dependency>
   </dependencies>
 </project>
