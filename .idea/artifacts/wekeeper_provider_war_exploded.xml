@@ -177,6 +177,7 @@
           <element id="library" level="project" name="Maven: cglib:cglib-nodep:2.2" />
           <element id="library" level="project" name="Maven: org.objenesis:objenesis:1.2" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:2.5.0" />
+          <element id="library" level="project" name="Maven: io.netty:netty-all:4.1.17.Final" />
           <element id="archive" name="wekeeper-api-0.0.1-SNAPSHOT.jar">
             <element id="module-output" name="wekeeper-api" />
           </element>
